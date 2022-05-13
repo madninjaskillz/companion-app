@@ -11,7 +11,7 @@ namespace BandCenter.Uno.Converters
         {
             if (value is int heartRate)
             {
-                return heartRate == 0 ? "<s>Loading...</s>" : $"{heartRate} <s>bpm</s>";
+                return heartRate == 0 ? "Loading..." : $"{heartRate} <s>bpm</s>";
             }
             else
             {

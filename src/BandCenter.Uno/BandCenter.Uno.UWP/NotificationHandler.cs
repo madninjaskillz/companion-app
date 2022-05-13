@@ -20,7 +20,6 @@ namespace BandCenter.Uno
             {
                 // This means the user has granted access.
                 case UserNotificationListenerAccessStatus.Allowed:
-                    await ServiceManager.StartUp();
                     listener.NotificationChanged += Listener_NotificationChanged;
                     break;
             }

@@ -11,6 +11,8 @@
     mc:Ignorable="d"
     >
     <Page.Resources>
+        <Custom:LastRunDistanceValueConverter x:Key="LastRunDistanceValueConverter"/>
+        <Custom:LastRunEndTimeValueConverter x:Key="LastRunEndTimeValueConverter"/>
         <Custom:HeartRateValueConverter x:Key="HeartRateValueConverter"/>
     </Page.Resources>
     <Page.Background>
@@ -36,8 +38,8 @@
                     <FontIconSource Glyph="&#xE005;" FontSize="32" FontFamily="{ThemeResource KSymbolFontFamily}"/>
                 </controls:ActivityTile.Icon>
             </controls:ActivityTile>
-            <controls:ActivityTile x:Name="RunTile" Subtitle="Run"
-                                   MetricMarkup="loading...">
+            <controls:ActivityTile x:Name="RunTile" Subtitle="{Binding RunEndTime, Converter={StaticResource LastRunEndTimeValueConverter}}"
+                                   MetricMarkup="{Binding RunDistance, Converter={StaticResource LastRunDistanceValueConverter}}">
                 <controls:ActivityTile.Icon>
                     <FontIconSource Glyph="&#xE004;" FontSize="32" FontFamily="{ThemeResource KSymbolFontFamily}"/>
                 </controls:ActivityTile.Icon>

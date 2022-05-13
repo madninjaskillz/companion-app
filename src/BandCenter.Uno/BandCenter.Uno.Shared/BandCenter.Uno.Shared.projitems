@@ -24,6 +24,7 @@
       <DependentUpon>MetricMarkupPresenter.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\HeartRateValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\LastRunValueConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)INotificationHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

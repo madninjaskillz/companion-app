@@ -16,6 +16,7 @@
     <_Globbed_Compile Remove="Controls\ActivityTile.cs" />
     <_Globbed_Compile Remove="Controls\MetricMarkupPresenter.xaml.cs" />
     <_Globbed_Compile Remove="Converters\HeartRateValueConverter.cs" />
+    <_Globbed_Compile Remove="Converters\LastRunValueConverters.cs" />
     <_Globbed_Compile Remove="INotificationHandler.cs" />
     <_Globbed_Compile Remove="MainPageViewModel.cs" />
     <_Globbed_Compile Remove="ServiceManager.cs" />
