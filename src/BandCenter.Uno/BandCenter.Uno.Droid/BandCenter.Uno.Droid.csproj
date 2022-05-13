@@ -61,15 +61,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Uno.UI" Version="[4.1.9]" />
-    <PackageReference Include="Uno.UI.RemoteControl" Version="4.1.9" Condition="'$(Configuration)'=='Debug'" />
-    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.1.9" />
-    <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.33" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Uno.UI" Version="[4.2.6]" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="[4.2.6]" Condition="'$(Configuration)'=='Debug'" />
+    <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="[4.2.6]" />
+    <PackageReference Include="Uno.UniversalImageLoader" Version="[1.9.35]" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="[6.0.0]" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="[6.0.0]" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="NotificationHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Main.cs" />
   </ItemGroup>

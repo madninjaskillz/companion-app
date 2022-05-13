@@ -23,6 +23,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MetricMarkupPresenter.xaml.cs">
       <DependentUpon>MetricMarkupPresenter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\HeartRateValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)INotificationHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
