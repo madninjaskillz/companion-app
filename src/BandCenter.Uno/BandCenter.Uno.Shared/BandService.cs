@@ -47,6 +47,11 @@ namespace BandCenter.Uno
             }
         }
 
+        public void SendNotification(string from, string title, string body)
+        {
+            bandClient.SendEmailNotification(from, title, DateTime.Now);
+        }
+
         public async Task StartHeartRate()
         {
             // check current user heart rate consent

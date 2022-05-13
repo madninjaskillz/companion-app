@@ -4,7 +4,8 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  IgnorableNamespaces="uap mp uap3">
 
   <Identity
     Name="828f151e-e097-4b1d-92ee-aa5d2a231950"
@@ -45,6 +46,10 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <uap:Capability Name="chat"/>
+    <uap:Capability Name="contacts"/>
+    <uap:Capability Name="phoneCall"/>
+    <uap3:Capability Name="userNotificationListener"/>
     <DeviceCapability Name="bluetooth"/>
   </Capabilities>
 </Package>
