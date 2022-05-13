@@ -133,7 +133,10 @@ namespace BandCenter.Uno
                 await bandClient.TileManager.RemoveTileAsync(tile);
             }
         }
-
+        public async Task<CargoRunStatistics> GetRunStats() 
+        {
+            return await bandClient.GetLastRunStatisticsAsync();
+        }
 
         public async Task StartHeartRate()
         {

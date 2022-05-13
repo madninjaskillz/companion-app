@@ -16,7 +16,10 @@ namespace BandCenter.Uno.ViewModels
   
      public async Task StartUp()
         {
-            ServiceManager.BandService.HeartRateChanged += BandService_HeartRateChanged;  
+            ServiceManager.BandService.HeartRateChanged += BandService_HeartRateChanged;
+            var lastRun = await ServiceManager.BandService.GetRunStats();
+            RunEndTime = lastRun.EndTime;
+            RunDistance = lastRun.Distance;
         }
 
         private void BandService_HeartRateChanged(object sender, HeartRateChangedEventArgs e)
@@ -25,5 +28,8 @@ namespace BandCenter.Uno.ViewModels
         }
 
         public int HeartRate { get => Get<int>(); set => Set<int>(value); }
+        public DateTime RunEndTime { get => Get<DateTime>(); set => Set<DateTime>(value); }
+        public uint RunDistance { get => Get<uint>(); set => Set<uint>(value); }
+
     }
 }
