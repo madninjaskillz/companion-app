@@ -1,31 +1,17 @@
-﻿using BandCenter.Uno.Controls;
-using BandCenter.Uno.ViewModels;
-using Microsoft.Band;
-using Microsoft.Band.Admin.Phone;
+﻿using BandCenter.Uno.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Notifications;
 using Windows.UI.Notifications.Management;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace BandCenter.Uno
 {
-    
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -35,7 +21,7 @@ namespace BandCenter.Uno
         public MainPage()
         {
             Loaded += MainPage_Loaded;
-            
+
             vm = new MainPageViewModel();
             this.DataContext = vm;
             this.InitializeComponent();
@@ -45,42 +31,37 @@ namespace BandCenter.Uno
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             await vm.StartUp();
-            
-
-            // And request access to the user's notifications (must be called from UI thread)
             UserNotificationListenerAccessStatus accessStatus = await listener.RequestAccessAsync();
 
             switch (accessStatus)
             {
                 // This means the user has granted access.
                 case UserNotificationListenerAccessStatus.Allowed:
+                    await ServiceManager.StartUp();
                     listener.NotificationChanged += Listener_NotificationChanged;
                     break;
-
             }
-    }
+        }
 
-        private void Listener_NotificationChanged(UserNotificationListener sender, Windows.UI.Notifications.UserNotificationChangedEventArgs args)
+        //this all feels very windows specific - not ideal. should abstract it out.
+        private void Listener_NotificationChanged(UserNotificationListener sender, UserNotificationChangedEventArgs args)
         {
-            Debug.WriteLine(args.UserNotificationId);
             UserNotification notification = listener.GetNotification(args.UserNotificationId);
-            string appDisplayName = notification.AppInfo.DisplayInfo.DisplayName;
-            NotificationBinding toastBinding = notification.Notification.Visual.GetBinding(KnownNotificationBindings.ToastGeneric);
-
-            if (toastBinding != null)
+            if (notification != null)
             {
-                // And then get the text elements from the toast binding
-                IReadOnlyList<AdaptiveNotificationText> textElements = toastBinding.GetTextElements();
+                Windows.Storage.Streams.RandomAccessStreamReference icon = notification.AppInfo.DisplayInfo.GetLogo(new Size(64, 64));
+                string appDisplayName = notification.AppInfo.DisplayInfo.DisplayName;
+                string appId = notification.AppInfo.AppUserModelId;
+                NotificationBinding toastBinding = notification.Notification.Visual.GetBinding(KnownNotificationBindings.ToastGeneric);
 
-                // Treat the first text element as the title text
-                string titleText = textElements.FirstOrDefault()?.Text;
-
-                // We'll treat all subsequent text elements as body text,
-                // joining them together via newlines.
-                string bodyText = string.Join("\n", textElements.Skip(1).Select(t => t.Text));
-
-                ServiceManager.BandService.SendNotification(appDisplayName, titleText, bodyText);
+                if (toastBinding != null)
+                {
+                    IReadOnlyList<AdaptiveNotificationText> textElements = toastBinding.GetTextElements();
+                    string titleText = textElements.FirstOrDefault()?.Text;
+                    string bodyText = string.Join("\n", textElements.Skip(1).Select(t => t.Text));
+                    ServiceManager.BandService.SendNotification(appId, appDisplayName, icon, titleText, bodyText);
+                }
             }
         }
-        }
     }
+}

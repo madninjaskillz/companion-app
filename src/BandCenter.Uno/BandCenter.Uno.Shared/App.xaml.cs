@@ -97,14 +97,9 @@ namespace BandCenter.Uno
                 _window.Activate();
             }
 
-            StartUpServices();
         }
 
-        private async Task StartUpServices()
-        {
-            ServiceManager.StartUp();
-        } 
-
+    
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>
