@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:BandCenter.Uno.Controls"
+    xmlns:VM="clr-namespace:BandCenter.Uno.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <ScrollViewer>
         <StackPanel Spacing="2">
             <controls:ActivityTile x:Name="StepsTile" Subtitle="Steps"
@@ -18,7 +18,7 @@
                 </controls:ActivityTile.Icon>
             </controls:ActivityTile>
             <controls:ActivityTile x:Name="HeartRateTile" Subtitle="Heart rate"
-                                   MetricMarkup="[not recording]">
+                                   MetricMarkup="{Binding HeartRate}">
                 <controls:ActivityTile.Icon>
                     <FontIconSource Glyph="&#xE006;" FontSize="32" FontFamily="{ThemeResource KSymbolFontFamily}"/>
                 </controls:ActivityTile.Icon>

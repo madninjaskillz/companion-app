@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)BandService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ActivityTile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MetricMarkupPresenter.xaml.cs">
       <DependentUpon>MetricMarkupPresenter.xaml</DependentUpon>
@@ -25,6 +26,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\ActivityTileStyles.xaml.cs">
       <DependentUpon>ActivityTileStyles.xaml</DependentUpon>
     </Compile>
@@ -69,5 +72,8 @@
     <PRIResource Include="@(_Globbed_PRIResource)" />
     <_Globbed_Content Include="$(MSBuildThisFileDirectory)Assets/**/*.*" Exclude="@(Content)" />
     <Content Include="@(_Globbed_Content)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

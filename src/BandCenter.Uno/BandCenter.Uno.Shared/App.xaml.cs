@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -95,7 +96,14 @@ namespace BandCenter.Uno
                 // Ensure the current window is active
                 _window.Activate();
             }
+
+            StartUpServices();
         }
+
+        private async Task StartUpServices()
+        {
+            ServiceManager.StartUp();
+        } 
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails
